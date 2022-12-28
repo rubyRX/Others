@@ -1,0 +1,105 @@
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Name = tostring(game.Name)
+
+local Window = Library:CreateWindow({
+	Name = "Rose | Universal",
+	LoadingTitle = "Rose | ".. identifyexecutor(),
+	LoadingSubtitle = "Welcome",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "roseconfig"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "rose", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Rose | ".. identifyexecutor(),
+		Subtitle = "Input License Key",
+		Note = "discord.gg/rose",
+		FileName = "rosekey",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "Hello"
+	}
+})
+
+
+local Player = Window:CreateTab("Player") -- Title, Image
+
+local Visuals = Window:CreateTab("Visuals") -- Title, Image
+
+local Section1 = Player:CreateSection("Player")
+
+local Section2 = Visuals:CreateSection("Visuals")
+
+Library:Notify({
+    Title = "Rose",
+    Content = "Thanks for using Rose, ".. game.Players.LocalPlayer.Name,
+    Duration = 6.5,
+    Image = 4483362458,
+    Actions = { -- Notification Buttons
+        Ignore = {
+            Name = "Okay!",
+            Callback = function()
+                print("done")
+            end
+		},
+	},
+})
+
+function SendNoti(Text)
+    Library:Notify({
+    Title = "Rose",
+    Content = Text,
+    Duration = 6.5,
+    Image = 4483362458,
+    Actions = { -- Notification Buttons
+        Ignore = {
+            Name = "Okay!",
+            Callback = function()
+                print("done")
+            end
+		},
+	},
+})
+end
+
+local Slider = Player:CreateSlider({
+	Name = "Walk Speed",
+	Range = {16, 250},
+	Increment = 1,
+	Suffix = "Walk Speed",
+	CurrentValue = 16,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end
+})
+
+local Slider1 = Player:CreateSlider({
+	Name = "Jump Power",
+	Range = {50, 250},
+	Increment = 1,
+	Suffix = "Jump Power",
+	CurrentValue = 50,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	end
+})
+
+local Slider2 = Player:CreateSlider({
+	Name = "Hip Height",
+	Range = {2.22, 250},
+	Increment = 1,
+	Suffix = "Hip Height",
+	CurrentValue = 2.22,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
+	end
+})
