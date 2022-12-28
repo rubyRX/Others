@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/rubyRX/Others/main/library'))()
 local Name = tostring(game.Name)
 
 local Window = Library:CreateWindow({
